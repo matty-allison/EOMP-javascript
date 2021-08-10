@@ -1,4 +1,5 @@
-let getProductsUrl = "https://point-of-sale3.herokuapp.com/show-products/";
+let getProductsUrl =
+  "https://point-of-sale-flask-app2.herokuapp.com/show-products/";
 
 function showProducts(url) {
   fetch(url)
