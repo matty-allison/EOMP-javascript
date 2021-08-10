@@ -5,9 +5,8 @@ const theForm = [
     subHead: "Welcome, Please register",
     action: "https://point-of-sale3.herokuapp.com/register/",
     method: "post",
-    click: "Click me",
-    url: "#",
-  }
+    click: "Click me!",
+  },
 ];
 
 function createForm(oneForm) {
@@ -48,16 +47,16 @@ function createForm(oneForm) {
         placeholder="Password"
         required
       />
-      <button class="send" href="${oneForm.url}" type="submit">${oneForm.click}</button>
+      <button class="send" href="#" type="submit">${oneForm.click}</button>
     </form>`;
   return createForm;
 }
 
 function displayForm() {
   let formContainer = document.querySelector(".spikes");
-  for (f in theForm) {
-    let display = createForm(f);
-    formContainer.innerHTML += display;
+  for (form of theForm) {
+    let see = createForm(form);
+    formContainer.innerHTML += see;
   }
 }
 
