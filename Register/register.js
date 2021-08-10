@@ -1,11 +1,12 @@
 const theForm = [
   {
     formImg: "yoco.png",
-    heading: "Yoco point of sale",
-    subHead: "Welcome, Please register",
+    heading: "Yoco point of sale!",
+    subHead: "Welcome, Please register.",
     action: "https://point-of-sale3.herokuapp.com/register/",
     method: "post",
     click: "Click me!",
+    logIn: "Already signed up?",
   },
 ];
 
@@ -48,7 +49,8 @@ function createForm(oneForm) {
         required
       />
       <button class="send" href="#" type="submit">${oneForm.click}</button>
-    </form>`;
+    </form>
+    <a href="#" class="login-btn">${oneForm.logIn}</a>`;
   return createForm;
 }
 
