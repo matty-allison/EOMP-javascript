@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/284f158042.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,17 +18,37 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="navbar">
-      <nav class="nav">
-        <ul class="links">
-          <a href="" class="button">Home</a>
-          <a href="" class="button">Products</a>
-          <a href="" class="button">Checkout</a>
-          <a href="" class="button">Account</a>
-        </ul>
-      </nav>
-    </div>
-    <div class="product-container"></div>
+    <section class="spikes">
+      <button class="addbtn"><i class="fas fa-plus"></i></button>
+      <img class="checkout-icon" src="./icon.png" alt="Checkout icon" />
+      <img class="yoco-logo" src="yoco.png" alt="yoco logo" />
+      <form action="" class="product-form">
+        <input
+        type="text"
+        name="product-name"
+        id="product-name"
+        placeholder="Product Name"
+        required
+      />
+      <input
+        type="text"
+        name="product-description"
+        id="product-description"
+        placeholder="Product description"
+        required
+      />
+      <input
+        type="text"
+        name="product-price"
+        id="product-price"
+        placeholder="Product price"
+        required
+      />
+      <button onclick="addProduct()" class="product-add-btn" type="submit">Add</button>
+      </form>
+      <div class="product-container"></div>
+    </section>
+    <h2 class="footer">By Matthew Morne Allison</h2>
     <script src="/point of sale/index.js"></script>
   </body>
 </html>

@@ -43,7 +43,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .form-container input {
@@ -52,7 +52,7 @@ body {
   background: none;
   height: 30px;
   text-align: center;
-  width: 165%;
+  width: 170%;
   outline: none;
   font-size: 80%;
 }
