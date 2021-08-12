@@ -2,81 +2,96 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Oswald", sans-serif;
-  background: var(--primary-color);
+  background-color: var(--primary-color);
 }
 :root {
   --primary-color: #01a9e0;
   --secondary-color: #000;
   --tertiary-color: #fff;
+  --fade-color: rgba(6, 114, 168, 0.6);
 }
-.spikes {
-  position: relative;
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  color: var(--secondary-color);
+  background-color: var(--fade-color);
+}
+
+.wholepage {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 20px;
-  background: var(--tertiary-color);
-  height: 87vh;
-  gap: 20px;
 }
-.spikes::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  left: -0%;
-  top: 100%;
-  z-index: 10;
-  display: block;
-  height: 105px;
-  background-size: 105px 100%;
-  background-image: linear-gradient(
-      135deg,
-      var(--tertiary-color) 25%,
-      transparent 25%
-    ),
-    linear-gradient(225deg, var(--tertiary-color) 25%, transparent 25%);
-  background-position: 0 0;
+
+#about {
+  margin-top: 6%;
+  text-align: center;
+  display: flex;
+  padding: 2%;
+  border: 2px solid var(--secondary-color);
+  font-size: 125%;
+  width: 50%;
+  background-color: var(--tertiary-color);
+  gap: 30px;
+}
+
+.yocomachine{
+  width: 50%;
+  height: 50%;
+}
+
+#productsection {
+  margin-top: 3%;
+  display: flex;
+  border: 2px solid var(--secondary-color);
+  text-align: center;
+  flex-direction: column;
+  padding: 2%;
+  width: 50%;
+  background-color: var(--tertiary-color);
+  margin-bottom: 2%;
+  gap: 10px;
 }
 
 .product-container {
   display: flex;
+  text-align: center;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.productcard {
+#productcard {
   border: 3px solid;
-  width: 20%;
-  height: 250px;
-  background: var(--primary-color);
+  width: 32%;
+  height: 350px;
+  text-align: center;
+}
+
+.productimg {
+  width: 75px;
+  height: 75px;
 }
 
 .yoco-logo {
   width: 200px;
   height: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
-#navbar {
-  display: flex;
+.footer {
   position: fixed;
-  top: 0;
-}
-
-.footer{
-  display: flex;
-  position: fixed;
+  text-align: center;
   bottom: 0;
-  margin: 10px;
+  background: var(--fade-color);
+  width: 100%;
+  margin: 0;
 }
 
-.checkout-icon{
-  position: fixed;
-  top: 0;
-  right: 0;
+.checkout-icon {
   margin: 20px;
   width: 3%;
   height: 5%;
@@ -89,8 +104,49 @@ body {
   position: fixed;
 } */
 
-.addbtn{
-  position: fixed;
-  left: 0;
-  margin: 10px;
+.addbtn {
+  background: none;
+  border: none;
+  width: 20px;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25%;
+  gap: 10px;
+}
+
+#search {
+  text-align: center;
+  width: 25%;
+}
+
+.sectionbtn {
+  display: flex;
+  gap: 50px;
+}
+
+.sectionbtn a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 150%;
+  transition: 0.3s ease-in-out;
+}
+
+.sectionbtn a:hover {
+  color: var(--primary-color);
+}
+
+.user-and-cart {
+  display: flex;
+  gap: 40px;
+  margin-right: 30px;
+}
+
+.user-and-cart a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 150%;
 }
