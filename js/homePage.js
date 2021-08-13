@@ -42,7 +42,8 @@ function addProduct() {
   let productName = document.getElementById("product-name").value;
   let productDecription = document.getElementById("product-description").value;
   let productPrice = document.getElementById("product-price").value;
-  let productImage = document.querySelector(".imgholder").src;  fetch("https://point-of-sale-flask-app2.herokuapp.com/add-product/", {
+  let productImage = document.querySelector(".imgholder").src;
+  fetch("https://point-of-sale-flask-app2.herokuapp.com/add-product/", {
     method: "post",
     body: JSON.stringify({
       product_name: productName,
