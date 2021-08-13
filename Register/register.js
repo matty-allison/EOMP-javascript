@@ -3,7 +3,7 @@ const theForm = [
     formImg: "yoco.png",
     heading: "Yoco point of sale!",
     subHead: "Welcome, Please register.",
-    action: "https://point-of-sale3.herokuapp.com/register/",
+    action: "https://point-of-sale-flask-app2.herokuapp.com/register/",
     method: "post",
     click: "Click me!",
     logIn: "Already signed up?",

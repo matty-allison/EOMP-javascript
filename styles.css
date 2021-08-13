@@ -69,12 +69,13 @@ body {
   border: 3px solid;
   width: 32%;
   height: 350px;
+  font-size: 90%;
   text-align: center;
 }
 
 .productimg {
-  width: 75px;
-  height: 75px;
+  width: 125px;
+  height: 100px;
 }
 
 .yoco-logo {
@@ -149,4 +150,8 @@ body {
   color: var(--secondary-color);
   text-decoration: none;
   font-size: 150%;
+}
+
+.imgholder{
+  display: none;
 }

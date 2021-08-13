@@ -3,8 +3,6 @@ const form = [
     formImg: "yoco.png",
     heading: "Yoco point of sale!",
     subHeading: "Welcome back, Please log in.",
-    action: "#",
-    method: "#",
     url: "#",
     btn: "Click me!",
     backRegister: "Don't have an account?",
@@ -16,7 +14,7 @@ function createForm(oneForm) {
   let createForm = `<img class="login-img" src="${oneForm.formImg}" alt="Yoco logo" />
     <h1 style="text-transform: uppercase;">${oneForm.heading}</h1>
     <h3>${oneForm.subHeading}</h3>
-    <form class="login-form" action="${oneForm.action}" method="${oneForm.method}">
+    <form class="login-form">
       <input
         type="text"
         name="username"
@@ -51,7 +49,7 @@ try {
   function logInUser() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-    fetch("https://point-of-sale3.herokuapp.com/auth", {
+    fetch("https://point-of-sale-flask-app2.herokuapp.com/auth/", {
       method: "POST",
       body: JSON.stringify({
         username: username,

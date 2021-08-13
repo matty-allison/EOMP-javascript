@@ -55,30 +55,31 @@
       <!-- product section -->
       <section id="productsection">
         <!-- add a product -->
-        <form action="" class="product-form">
+        <form class="product-form">
           <input
             type="file"
-            name="image"
+            name="product_image"
             id="image"
             placeholder="Uplaod image"
+            onchange="imageConverter()"
           />
           <input
             type="text"
-            name="product-name"
+            name="product_name"
             id="product-name"
             placeholder="Product Name"
             required
           />
           <input
             type="text"
-            name="product-description"
+            name="product_description"
             id="product-description"
             placeholder="Product description"
             required
           />
           <input
             type="text"
-            name="product-price"
+            name="product_price"
             id="product-price"
             placeholder="Product price"
             required
@@ -102,6 +103,7 @@
       </section>
       <h2 class="footer">By Matthew Morne Allison</h2>
     </div>
+    <img src="" alt="" class="imgholder">
     <script src="/point of sale/index.js"></script>
   </body>
 </html>
