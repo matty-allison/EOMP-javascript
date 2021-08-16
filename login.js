@@ -3,10 +3,10 @@ const form = [
     formImg: "yoco.png",
     heading: "Yoco point of sale!",
     subHeading: "Welcome back, Please log in.",
-    url: "#",
+    url: "index3.html",
     btn: "Click me!",
     backRegister: "Don't have an account?",
-    backUrl: "#",
+    backUrl: "index.html",
   },
 ];
 
@@ -14,7 +14,7 @@ function createForm(oneForm) {
   let createForm = `<img class="login-img" src="${oneForm.formImg}" alt="Yoco logo" />
     <h1 style="text-transform: uppercase;">${oneForm.heading}</h1>
     <h3>${oneForm.subHeading}</h3>
-    <form class="login-form">
+    <form action="${oneForm.url}" class="login-form">
       <input
         type="text"
         name="username"
@@ -29,7 +29,7 @@ function createForm(oneForm) {
         placeholder="Password"
         required
       />
-      <button onclick="logInUser()" class="login-btn" href="${oneForm.url}" type="submit">${oneForm.btn}</button>
+      <button onclick="logInUser()" class="login-btn" type="submit">${oneForm.btn}</button>
     </form>
     <a class="register-btn" href="${oneForm.backUrl}">${oneForm.backRegister}</a>`;
   return createForm;

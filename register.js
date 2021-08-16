@@ -3,8 +3,7 @@ const theForm = [
     formImg: "yoco.png",
     heading: "Yoco point of sale!",
     subHead: "Welcome, Please register.",
-    action: "https://point-of-sale-flask-app2.herokuapp.com/register/",
-    method: "post",
+    action: "index2.html",
     click: "Click me!",
     logIn: "Already signed up?",
   },
@@ -17,7 +16,6 @@ function createForm(oneForm) {
     <form
       class="form-container"
       action="${oneForm.action}"
-      method="${oneForm.method}"
     >
       <input type="text" name="name" id="name" placeholder="Name" required />
       <input
@@ -48,9 +46,9 @@ function createForm(oneForm) {
         placeholder="Password"
         required
       />
-      <button class="send" href="#" type="submit">${oneForm.click}</button>
+      <button onclick="register()" class="send" type="submit">${oneForm.click}</button>
     </form>
-    <a href="#" class="login-btn">${oneForm.logIn}</a>`;
+    <a href="index2.html" class="login-btn">${oneForm.logIn}</a>`;
   return createForm;
 }
 
@@ -63,3 +61,28 @@ function displayForm() {
 }
 
 displayForm();
+
+function register() {
+  let name = document.getElementById("name").value;
+  let surname = document.getElementById("surname").value;
+  let username = document.getElementById("username").value;
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  fetch("https://point-of-sale-flask-app2.herokuapp.com/register/", {
+    method: "post",
+    body: JSON.stringify({
+      name: name,
+      surname: surname,
+      username: username,
+      email: email,
+      password: password,
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+    });
+}

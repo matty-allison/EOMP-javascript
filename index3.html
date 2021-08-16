@@ -60,7 +60,6 @@
             type="file"
             name="product_image"
             id="image"
-            placeholder="Uplaod image"
             onchange="imageConverter()"
           />
           <input
@@ -92,6 +91,50 @@
             Add
           </button>
         </form>
+        <!-- update -->
+        <form class="product-form">
+          <input
+            type="file"
+            name="product_image"
+            id="updateImage"
+            onchange="imageConverter()"
+          />
+          <input
+            type="text"
+            name="product_id"
+            id="productId"
+            placeholder="Enter the Product ID"
+            required
+          />
+          <input
+            type="text"
+            name="product_name"
+            id="productname"
+            placeholder="Updated product Name"
+            required
+          />
+          <input
+            type="text"
+            name="product_description"
+            id="productdescription"
+            placeholder="Updated product description"
+            required
+          />
+          <input
+            type="text"
+            name="product_price"
+            id="productprice"
+            placeholder="Updated product price"
+            required
+          />
+          <button
+            onclick="event.preventDefault(),updateProduct()"
+            class="product-add-btn"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
         <h1 style="font-size: 250%">Products</h1>
         <div>
           <input
@@ -108,6 +151,6 @@
       <h2 class="footer">By Matthew Morne Allison</h2>
     </div>
     <img src="" alt="" class="imgholder" />
-    <script src="js/homePage.js"></script>
+    <script src="homePage.js"></script>
   </body>
 </html>

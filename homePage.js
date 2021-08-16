@@ -9,7 +9,7 @@ function showProducts(url) {
       let container = document.querySelector(".product-container");
       product.forEach((p) => {
         // console.log(p);
-        container.innerHTML += `<div id="productcard"><p class="productid">${p[1]}</p><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button class="edit"><i class="fas fa-pen"></i></button><button onclick="deleteProduct()" class="delete"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
+        container.innerHTML += `<div id="productcard"><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button onclick="deleteProduct()" class="delete${p[1]}"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
       });
     });
 }
@@ -79,7 +79,7 @@ fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
       let container = document.querySelector(".product-container");
       container.innerHTML = "";
       filteredProducts.forEach((p) => {
-        container.innerHTML += `<div id="productcard"><p class="productid">${p[1]}</p><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button class="edit"><i class="fas fa-pen"></i></button><button class="delete"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
+        container.innerHTML += `<div id="productcard"><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button onclick="deleteProduct()" class="delete${p[1]}"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
       });
     });
   });
@@ -87,20 +87,42 @@ fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
 // delete
 
 function deleteProduct() {
-  fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
+  let productId = 
+}
+
+// fetch(
+//   `https://point-of-sale-flask-app2.herokuapp.com/delete-product/${productId}/`
+// )
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
+
+// update
+function updateProduct() {
+  let productId = document.getElementById("productId").value;
+  let productName = document.getElementById("productname").value;
+  let productDecription = document.getElementById("productdescription").value;
+  let productPrice = document.getElementById("productprice").value;
+  let productImage = document.querySelector(".imgholder").src;
+  console.log(productId);
+  fetch(
+    `https://point-of-sale-flask-app2.herokuapp.com/edit-product/${productId}/`,
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        product_name: productName,
+        product_description: productDecription,
+        product_price: productPrice,
+        product_image: productImage,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  )
     .then((res) => res.json())
-    .then((data) => {
-      let product = data.data;
-      product.forEach((p) => {
-        let productId = p[1];
-        console.log(productId);
-        fetch(
-          `https://point-of-sale-flask-app2.herokuapp.com/delete-product/${productId}/`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          });
-      });
+    .then((json) => {
+      console.log(json);
     });
 }
