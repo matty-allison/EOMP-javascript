@@ -87,7 +87,6 @@ fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
 // delete
 
 function deleteProduct() {
-  let productId = 
 }
 
 // fetch(
