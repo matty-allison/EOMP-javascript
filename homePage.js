@@ -1,3 +1,4 @@
+let cart = []
 let getProductsUrl =
   "https://point-of-sale-flask-app2.herokuapp.com/show-products/";
 function showProducts(url) {
@@ -9,7 +10,7 @@ function showProducts(url) {
       let container = document.querySelector(".product-container");
       product.forEach((p) => {
         // console.log(p);
-        container.innerHTML += `<div id="productcard"><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button onclick="deleteProduct()" class="delete${p[1]}"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
+        container.innerHTML += `<div id="productcard"><p>${p[1]}</p><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">R${p[4]}</h4><div class="editing-btns"><button onclick="productCart(${p[1]})" class="select"><i class="fas fa-check"></i></button></div></div>`;
       });
     });
 }
@@ -57,7 +58,7 @@ function addProduct() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(productName, productDecription, productPrice);
+      window.location.reload();
     });
 }
 
@@ -79,7 +80,7 @@ fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
       let container = document.querySelector(".product-container");
       container.innerHTML = "";
       filteredProducts.forEach((p) => {
-        container.innerHTML += `<div id="productcard"><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">${p[4]}</h4><div class="editing-btns"><button onclick="deleteProduct()" class="delete${p[1]}"><i class="fas fa-trash"></i></button><button class="select"><i class="fas fa-check"></i></button></div></div>`;
+        container.innerHTML += `<div id="productcard"><p>${p[1]}</p><img class="productimg" src="${p[5]}" alt="Imgae of the product"><h2 class="productname">${p[2]}</h2><p class="productdes">${p[3]}</p><h4 class="productprice">R${p[4]}</h4><div class="editing-btns"><button onclick="productCart(${p[1]})" class="select"><i class="fas fa-check"></i></button></div></div>`;
       });
     });
   });
@@ -87,15 +88,22 @@ fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
 // delete
 
 function deleteProduct() {
-}
+  let productID = document.getElementById("deleteInput").value;
 
-// fetch(
-//   `https://point-of-sale-flask-app2.herokuapp.com/delete-product/${productId}/`
-// )
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(data);
-//   });
+  fetch(
+    `https://point-of-sale-flask-app2.herokuapp.com/delete-product/${productID}/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      window.location.reload();
+    });
+}
 
 // update
 function updateProduct() {
@@ -104,7 +112,6 @@ function updateProduct() {
   let productDecription = document.getElementById("productdescription").value;
   let productPrice = document.getElementById("productprice").value;
   let productImage = document.querySelector(".imgholder").src;
-  console.log(productId);
   fetch(
     `https://point-of-sale-flask-app2.herokuapp.com/edit-product/${productId}/`,
     {
@@ -122,6 +129,29 @@ function updateProduct() {
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
+      window.location.reload();
+    });
+}
+
+function productCart(id) {
+  let product = [];
+  fetch("https://point-of-sale-flask-app2.herokuapp.com/show-products/")
+    .then((res) => res.json())
+    .then((data) => {
+      let product = data.data;
+      let productInCart = product.find((p) => {
+        return p[1] == id;
+      });
+      cart.push(productInCart);
+      console.log(cart);
+      let cartContainer = document.querySelector(".productCheckout-container");
+      cartContainer.innerHTML = ``
+      cart.map((c) => {
+        cartContainer.innerHTML += `<p>${c[1]}</p><img class="productimg" src="${c[5]}" alt="Imgae of the product"><h2 class="productname">${c[2]}</h2><p class="productdes">${c[3]}</p><h4 class="productprice">${c[4]}</h4>`;
+      });
+      let totalPrice = cart.reduce((total, c) => total + parseInt(c[4]), 0);
+      let totalContainer = document.querySelector(".totalPrice")
+      totalContainer.innerHTML = ``
+      totalContainer.innerHTML += `R`+totalPrice
     });
 }

@@ -46,7 +46,7 @@ function createForm(oneForm) {
         placeholder="Password"
         required
       />
-      <button onclick="register()" class="send" type="submit">${oneForm.click}</button>
+      <button onclick="event.preventDefault(), register()" class="send" type="submit">${oneForm.click}</button>
     </form>
     <a href="index2.html" class="login-btn">${oneForm.logIn}</a>`;
   return createForm;
@@ -83,6 +83,18 @@ function register() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
+      let myStorage = window.localStorage;
+      myStorage.setItem(
+        "name",
+        name,
+        "surname",
+        surname,
+        "username",
+        username,
+        "email",
+        email,
+        "password",
+        password
+      );
     });
 }

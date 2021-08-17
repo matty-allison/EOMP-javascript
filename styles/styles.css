@@ -40,7 +40,7 @@ body {
   gap: 30px;
 }
 
-.yocomachine{
+.yocomachine {
   width: 50%;
   height: 50%;
 }
@@ -152,6 +152,10 @@ body {
   font-size: 150%;
 }
 
-.imgholder{
+.imgholder {
   display: none;
+}
+
+#checkout {
+  display: flex;
 }
