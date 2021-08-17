@@ -46,7 +46,7 @@ function createForm(oneForm) {
         placeholder="Password"
         required
       />
-      <button onclick="event.preventDefault(), register()" class="send" type="submit">${oneForm.click}</button>
+      <button onclick="register()" class="send" type="submit">${oneForm.click}</button>
     </form>
     <a href="index2.html" class="login-btn">${oneForm.logIn}</a>`;
   return createForm;
